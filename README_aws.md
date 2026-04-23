@@ -110,7 +110,7 @@ Outputs:
 
 alb_dns_name = "ai-inference-alb-xxxxxx.us-east-1.elb.amazonaws.com"
 bastion_public_ip = "100.x.x.x"
-endpoint_url = "http://ai-inference-alb-xxxxxx.us-east-1.elb.amazonaws.com/v1/completions"
+endpoint_url = "http://ai-inference-alb-xxxxxx.us-east-1.elb.amazonaws.com/v1/chat/completions"
 gpu_private_ip = "10.0.1x.x"
 ```
 

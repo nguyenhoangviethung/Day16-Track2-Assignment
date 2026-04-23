@@ -140,9 +140,20 @@ resource "aws_security_group" "gpu_sg" {
 }
 
 # 4. Key Pair & Bastion
+resource "tls_private_key" "lab_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "aws_key_pair" "lab_key" {
   key_name   = "ai-lab-key-${random_id.id.hex}"
-  public_key = file("${path.module}/lab-key.pub")
+  public_key = tls_private_key.lab_key.public_key_openssh
+}
+
+resource "local_sensitive_file" "lab_private_key" {
+  filename        = "${path.module}/lab-key.pem"
+  content         = tls_private_key.lab_key.private_key_pem
+  file_permission = "0600"
 }
 
 resource "random_id" "id" {

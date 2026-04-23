@@ -5,7 +5,7 @@ output "load_balancer_ip" {
 
 output "api_endpoint" {
   description = "vLLM API endpoint URL"
-  value       = "http://${google_compute_global_forwarding_rule.vllm_fwd.ip_address}/v1"
+  value       = "http://${google_compute_global_forwarding_rule.vllm_fwd.ip_address}/v1/chat/completions"
 }
 
 output "gpu_node_name" {
